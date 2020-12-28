@@ -58,16 +58,15 @@ pipeline {
                     	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
                     	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:SMT-2 -i SMT-2 -o output-2.xml .'
                     }
-                }
-                post { 
-			        always {
-						script {
-							bat 'echo f | xcopy output-2.xml "'+SHARE_WORKSPACE+'" /Y /I'
-							bat 'echo f | xcopy SMT-2 "'+SHARE_WORKSPACE+'/SMT-2" /Y /I'
+                    post { 
+				        always {
+							script {
+								bat 'echo f | xcopy output-2.xml "'+SHARE_WORKSPACE+'" /Y /I'
+								bat 'echo f | xcopy SMT-2 "'+SHARE_WORKSPACE+'/SMT-2" /Y /I'
+							}
 						}
 					}
-				}
-                
+                }
             }
             post { 
 		        always {
