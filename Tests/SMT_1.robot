@@ -16,6 +16,4 @@ Open browser to test page
     ${HEADLESS}     Get variable value    ${HEADLESS}    ${False}
     &{options} =    create dictionary   headless=${HEADLESS}
     Open browser    ${url}    browser=chrome   options=${options}
-    ${SS_PATH} =    Get Variable Value    ${ARGS_SS_PATH}    ${None}
-    Return From Keyword If    '${SS_PATH}' == '${None}'
     Set Screenshot Directory    ${OUTPUT DIR}
