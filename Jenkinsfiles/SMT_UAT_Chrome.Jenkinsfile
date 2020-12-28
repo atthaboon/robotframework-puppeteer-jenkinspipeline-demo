@@ -59,21 +59,30 @@ pipeline {
                     	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:SMT-2 -i SMT-2 -o output-2.xml .'
                     }
                 }
+                post { 
+			        always {
+						script {
+							bat 'echo f | xcopy output-2.xml "'+SHARE_WORKSPACE+'" /Y /I'
+							bat 'echo f | xcopy SMT-2 "'+SHARE_WORKSPACE+'/SMT-2" /Y /I'
+						}
+					}
+				}
                 
             }
             post { 
 		        always {
 					script {
+						bat 'rebot output-*.xml'
 						step([
 							$class : 'RobotPublisher',
 							outputPath : '.',
-							outputFileName : "**/output-*.xml",
-							reportFileName : '**/report.html',
-							logFileName : '**/log.html',
+							// outputFileName : "output.xml",
+							reportFileName : 'report.html',
+							logFileName : 'log.html',
 							disableArchiveOutput : false,
 							passThreshold : 100.0,
 							unstableThreshold : 100.0,
-							otherFiles : '**/**/*.png',
+							otherFiles : 'SMT-*/*.png',
 						])
 					}
 		        }
