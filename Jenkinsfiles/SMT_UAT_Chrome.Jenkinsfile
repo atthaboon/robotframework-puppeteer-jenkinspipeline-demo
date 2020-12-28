@@ -38,7 +38,7 @@ pipeline {
                     }
                     steps {
                 		git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"SMT-1" -i SMT-1 -o output-1.xml -d "'+SHARE_WORKSPACE+'/SMT-1" .'
+                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -i SMT-1 -o output-1.xml -d "'+SHARE_WORKSPACE+'/SMT-1" .'
                     }
                 }
                 stage('SMT-2') {
@@ -47,7 +47,7 @@ pipeline {
                     }
                     steps {
                     	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"SMT-2" -i SMT-2 -o output-2.xml -d "'+SHARE_WORKSPACE+'/SMT-2" .'
+                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -i SMT-2 -o output-2.xml -d "'+SHARE_WORKSPACE+'/SMT-2" .'
                     }
                 }
                 stage('SMT-3') {
@@ -56,7 +56,7 @@ pipeline {
                     }
                     steps {
                     	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"SMT-3" -i SMT-3 -o output-3.xml -d "'+SHARE_WORKSPACE+'/SMT-3" .'
+                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -i SMT-3 -o output-3.xml -d "'+SHARE_WORKSPACE+'/SMT-3" .'
                     }
                 }
             }
