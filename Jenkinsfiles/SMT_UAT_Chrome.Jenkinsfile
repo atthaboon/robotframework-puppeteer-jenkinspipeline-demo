@@ -72,7 +72,7 @@ pipeline {
 							disableArchiveOutput : false,
 							passThreshold : 100.0,
 							unstableThreshold : 100.0,
-							otherFiles : '**/*.png',
+							otherFiles : '*.png',
 						])
 					}
 		        }
