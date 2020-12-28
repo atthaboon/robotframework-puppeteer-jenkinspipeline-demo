@@ -12,15 +12,10 @@ pipeline {
 					bat 'pip install -r requirements.txt'
 					
                     // Delete existing log
-                    try {
-                        bat 'del /S *.xml'
-                    } catch(Exception) {}
-                    try {
-                        bat 'del /S *.png'
-                    } catch(Exception) {}
-                    try {
-                        bat 'del /S *.html'
-                    } catch(Exception) {}
+                	bat 'del /S SMT-*/'
+                    bat 'del /S *.xml'
+                    bat 'del /S *.png'
+                    bat 'del /S *.html'
 
                     SHARE_WORKSPACE = env.WORKSPACE
                     SHARE_BRANCH_NAME = env.GIT_BRANCH
