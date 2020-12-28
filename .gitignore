@@ -1,0 +1,7 @@
+/libspecs/
+.project
+log.html
+output.xml
+puppeteer-screenshot-*.png
+red.xml
+report.html
