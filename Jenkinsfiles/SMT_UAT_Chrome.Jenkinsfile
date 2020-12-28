@@ -38,8 +38,17 @@ pipeline {
                     }
                     steps {
                 		git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"SMT-1/Screenshots" -i SMT-1 -o output-1.xml .'
+                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"SMT-1" -i SMT-1 -o output-1.xml .'
                     }
+                    post { 
+				        always {
+							script {
+								bat 'echo f | xcopy output-1.xml '+SHARE_WORKSPACE+' /Y /I'
+								bat 'echo f | xcopy SMT-1 '+SHARE_WORKSPACE+'/SMT-1 /Y /I'
+							}
+						}
+					}
+							
                 }
                 stage('SMT-2') {
                     agent {
@@ -47,18 +56,10 @@ pipeline {
                     }
                     steps {
                     	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:SMT-2 -i SMT-2 -o output-2.xml -d "'+SHARE_WORKSPACE+'/SMT-2" .'
+                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:SMT-2 -i SMT-2 -o output-2.xml .'
                     }
                 }
-                stage('SMT-3') {
-                    agent {
-                        label "master"
-                    }
-                    steps {
-                    	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:SMT-3 -i SMT-3 -o output-3.xml -d "'+SHARE_WORKSPACE+'/SMT-3" .'
-                    }
-                }
+                
             }
             post { 
 		        always {
