@@ -71,7 +71,7 @@ pipeline {
             post { 
 		        always {
 					script {
-						bat 'rebot rebot --outputdir . --output output.xml SMT-*/output-*.xml'
+						bat 'rebot --outputdir . --output output.xml SMT-*/output-*.xml'
 						step([
 							$class : 'RobotPublisher',
 							outputPath : '.',
