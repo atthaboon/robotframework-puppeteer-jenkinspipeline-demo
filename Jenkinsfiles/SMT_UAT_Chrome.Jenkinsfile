@@ -7,7 +7,7 @@ pipeline {
         stage('Prepare') {
             steps {
                 script {
-					bat 'E:\\PythonVENV\\Python3_SystemTest\\Scripts\\activate.bat & pip install -r requirements.txt'
+					// bat 'E:\\PythonVENV\\Python3_SystemTest\\Scripts\\activate.bat & pip install -r requirements.txt'
 					
                     // Delete existing log
                     try {
