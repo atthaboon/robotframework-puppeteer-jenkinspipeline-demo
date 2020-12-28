@@ -7,17 +7,17 @@ pipeline {
         stage('Prepare') {
             steps {
                 script {
-					bat 'pip install -r requirements.txt'
+					sh 'pip install -r requirements.txt'
 					
                     // Delete existing log
                     try {
-                        bat 'del /S *.xml'
+                        sh 'del /S *.xml'
                     } catch(Exception) {}
                     try {
-                        bat 'del /S *.png'
+                        sh 'del /S *.png'
                     } catch(Exception) {}
                     try {
-                        bat 'del /S *.html'
+                        sh 'del /S *.html'
                     } catch(Exception) {}
 
                     SHARE_WORKSPACE = env.WORKSPACE
@@ -36,7 +36,7 @@ pipeline {
                     }
                     steps {
                 		git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"'+SHARE_WORKSPACE+'/SMT-1" -i SMT-1 -e IGNOREORMANUAL -o output-1.xml -d "'+SHARE_WORKSPACE+'/SMT-1"  "Web_APP2_V2/Features/"'
+                    	sh 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"'+SHARE_WORKSPACE+'/SMT-1" -i SMT-1 -e IGNOREORMANUAL -o output-1.xml -d "'+SHARE_WORKSPACE+'/SMT-1"  "Web_APP2_V2/Features/"'
                     }
                 }
                 stage('SMT-2') {
@@ -45,7 +45,7 @@ pipeline {
                     }
                     steps {
                     	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"'+SHARE_WORKSPACE+'/SMT-2" -i SMT-2 -e IGNOREORMANUAL -o output-2.xml -d "'+SHARE_WORKSPACE+'/SMT-2" "Web_APP2_V2/Features/"'
+                    	sh 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"'+SHARE_WORKSPACE+'/SMT-2" -i SMT-2 -e IGNOREORMANUAL -o output-2.xml -d "'+SHARE_WORKSPACE+'/SMT-2" "Web_APP2_V2/Features/"'
                     }
                 }
                 stage('SMT-3') {
@@ -54,7 +54,7 @@ pipeline {
                     }
                     steps {
                     	git branch: SHARE_BRANCH_NAME, url: 'https://github.com/atthaboon/robotframework-puppeteer-jenkinspipeline-demo.git'
-                    	bat 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"'+SHARE_WORKSPACE+'/SMT-3" -i SMT-3 -e IGNOREORMANUAL -o output-3.xml -d "'+SHARE_WORKSPACE+'/SMT-3" "Web_APP2_V2/Features/"'
+                    	sh 'robot -v ARGS_BROWSER:CHROME -v HEADLESS:True -v ARGS_ENV:DEV -v ARGS_DATA:DEV -v ARGS_SS_PATH:"'+SHARE_WORKSPACE+'/SMT-3" -i SMT-3 -e IGNOREORMANUAL -o output-3.xml -d "'+SHARE_WORKSPACE+'/SMT-3" "Web_APP2_V2/Features/"'
                     }
                 }
             }
