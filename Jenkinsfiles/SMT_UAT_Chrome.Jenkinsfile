@@ -12,8 +12,8 @@ pipeline {
 					bat 'pip install -r requirements.txt'
 					
                     // Delete existing log
-                	bat 'echo f | del /S SMT-1 /Y /I'
-                	bat 'echo f | del /S SMT-2 /Y /I'
+                	bat 'echo Y | del /S SMT-1'
+                	bat 'echo Y | del /S SMT-2'
                     bat 'del /S *.xml'
                     bat 'del /S *.png'
                     bat 'del /S *.html'
