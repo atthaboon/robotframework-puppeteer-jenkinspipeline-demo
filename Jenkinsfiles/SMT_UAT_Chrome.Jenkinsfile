@@ -43,8 +43,8 @@ pipeline {
                     post { 
 				        always {
 							script {
-								bat 'echo f | xcopy output-1.xml '+SHARE_WORKSPACE+' /Y /I'
-								bat 'echo f | xcopy SMT-1 '+SHARE_WORKSPACE+'/SMT-1 /Y /I'
+								bat 'echo f | xcopy output-1.xml "'+SHARE_WORKSPACE+'" /Y /I'
+								bat 'echo f | xcopy SMT-1 "'+SHARE_WORKSPACE+'/SMT-1" /Y /I'
 							}
 						}
 					}
