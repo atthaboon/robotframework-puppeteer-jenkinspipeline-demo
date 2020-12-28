@@ -1,6 +1,6 @@
 *** Settings ***
 Library    PuppeteerLibrary
-Force Tags    SMT_2
+Force Tags    SMT-2
 Test Teardown    Close All Browser
 Suite Teardown    Close Puppeteer    
 
